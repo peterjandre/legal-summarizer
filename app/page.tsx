@@ -116,9 +116,9 @@ export default function Home() {
               </div>
             )}
           </CardContent>
-          <CardFooter className="text-center text-sm text-gray-500">
-            Your document will be discarded immediately after processing
-          </CardFooter>
+          {/* <CardFooter className="text-center text-sm text-gray-500">
+            Your document will be discarded immediately after processing.
+          </CardFooter> */}
         </Card>
       </div>
     </main>
