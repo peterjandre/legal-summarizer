@@ -8,12 +8,14 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { useToast } from "@/hooks/use-toast"
 
 export default function Home() {
   const [file, setFile] = useState<File | null>(null)
   const [summary, setSummary] = useState<string>("")
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string>("")
+  const { toast } = useToast()
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0]
@@ -56,9 +58,18 @@ export default function Home() {
 
       const data = await response.json()
       setSummary(data.summary)
+      toast({
+        title: "Success",
+        description: "Document has been successfully summarized",
+      })
     } catch (err) {
       setError("An error occurred while summarizing the document. Please try again.")
       console.error(err)
+      toast({
+        title: "Error",
+        description: "Failed to summarize the document. Please try again.",
+        variant: "destructive",
+      })
     } finally {
       setLoading(false)
     }
