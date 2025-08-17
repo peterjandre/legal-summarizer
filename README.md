@@ -84,14 +84,21 @@ This project is configured to automatically deploy the frontend to GitHub Pages 
    - Choose the **`gh-pages`** branch
    - Select the root folder (/) and click Save
 
-2. **Push your code** to the main branch:
+2. **Fix Workflow Permissions** (IMPORTANT):
+   - Go to Settings → Actions → General
+   - Scroll down to "Workflow permissions"
+   - Select **"Read and write permissions"**
+   - Check **"Allow GitHub Actions to create and approve pull requests"**
+   - Click Save
+
+3. **Push your code** to the main branch:
    ```bash
    git add .
    git commit -m "Add GitHub Actions deployment"
    git push origin main
    ```
 
-3. **Monitor the deployment**:
+4. **Monitor the deployment**:
    - Go to the "Actions" tab in your repository
    - You should see a "Build and Deploy to GitHub Pages" workflow running
    - The workflow will create a `gh-pages` branch with your built files
