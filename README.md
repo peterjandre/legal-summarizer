@@ -69,6 +69,64 @@ A web application that simplifies legal documents using AI.
 
 6. The backend will be available at http://localhost:8000
 
+## Deployment
+
+### Frontend Deployment (GitHub Pages)
+
+This project is configured to automatically deploy the frontend to GitHub Pages using GitHub Actions.
+
+#### Setup Instructions:
+
+1. **Enable GitHub Pages** in your repository:
+   - Go to your repository on GitHub
+   - Navigate to Settings → Pages
+   - Under "Source", select **"Deploy from a branch"**
+   - Choose the **`gh-pages`** branch
+   - Select the root folder (/) and click Save
+
+2. **Push your code** to the main branch:
+   ```bash
+   git add .
+   git commit -m "Add GitHub Actions deployment"
+   git push origin main
+   ```
+
+3. **Monitor the deployment**:
+   - Go to the "Actions" tab in your repository
+   - You should see a "Build and Deploy to GitHub Pages" workflow running
+   - The workflow will create a `gh-pages` branch with your built files
+   - Once complete, your site will be available at: `https://[your-username].github.io/legal-summarizer/`
+
+#### How it works:
+
+- The GitHub Actions workflow (`.github/workflows/deploy.yml`) automatically runs on every push to the main branch
+- It builds the Next.js application with static export enabled
+- The built files are pushed to the `gh-pages` branch
+- GitHub Pages serves the site from the `gh-pages` branch
+- The site is configured with the correct base path for the repository name
+
+### Backend Deployment (Vercel)
+
+The backend can be deployed to Vercel for serverless hosting.
+
+#### Setup Instructions:
+
+1. **Install Vercel CLI**:
+   ```bash
+   npm install -g vercel
+   ```
+
+2. **Deploy the backend**:
+   ```bash
+   cd backend
+   vercel
+   ```
+
+3. **Configure environment variables** in the Vercel dashboard:
+   - Add your `GOOGLE_API_KEY` environment variable
+
+4. **Update frontend API calls** to use the Vercel deployment URL
+
 ## Usage
 
 1. Open the web application in your browser
