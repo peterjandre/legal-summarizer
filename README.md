@@ -30,12 +30,19 @@ A web application that simplifies legal documents using AI.
    npm install
    ```
 
-2. Run the development server:
+2. Configure environment variables:
+   - Create a `.env.local` file in the root directory
+   - Add your backend API URL:
+     ```
+     NEXT_PUBLIC_API_URL=https://your-backend-url.com
+     ```
+
+3. Run the development server:
    ```
    npm run dev
    ```
 
-3. Access the frontend at http://localhost:3000
+4. Access the frontend at http://localhost:3000
 
 ### Backend Setup
 
@@ -67,7 +74,7 @@ A web application that simplifies legal documents using AI.
    uvicorn main:app --reload
    ```
 
-6. The backend will be available at http://localhost:8000
+6. The backend will be available at the URL specified in your environment variables
 
 ## Deployment
 
@@ -112,38 +119,7 @@ This project is configured to automatically deploy the frontend to GitHub Pages 
 - GitHub Pages serves the site from the `gh-pages` branch
 - The site is configured with the correct base path for the repository name
 
-### Backend Deployment (Vercel)
 
-The backend is configured for deployment to Vercel for serverless hosting.
-
-#### Setup Instructions:
-
-1. **Install Vercel CLI**:
-   ```bash
-   npm install -g vercel
-   ```
-
-2. **Deploy the backend**:
-   ```bash
-   cd backend
-   vercel
-   ```
-
-3. **Configure environment variables** in the Vercel dashboard:
-   - Go to your project in the Vercel dashboard
-   - Navigate to Settings → Environment Variables
-   - Add `GOOGLE_API_KEY` with your Google Gemini API key
-
-4. **Update frontend API calls**:
-   - Once deployed, Vercel will provide a URL like: `https://your-project.vercel.app`
-   - Update your frontend API calls to use this URL instead of `localhost:8000`
-
-#### Vercel Configuration Files:
-
-- `vercel.json`: Configures the Python runtime and routing
-- `requirements.txt`: Python dependencies for Vercel
-- `runtime.txt`: Specifies Python 3.11 runtime
-- Updated CORS settings to allow GitHub Pages domain
 
 ## Usage
 

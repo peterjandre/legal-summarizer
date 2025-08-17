@@ -47,7 +47,7 @@ export default function Home() {
     formData.append("file", file)
 
     try {
-      const response = await fetch("http://localhost:8000/summarize", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/summarize`, {
         method: "POST",
         body: formData,
       })
