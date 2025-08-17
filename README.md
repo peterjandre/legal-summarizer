@@ -107,7 +107,7 @@ This project is configured to automatically deploy the frontend to GitHub Pages 
 
 ### Backend Deployment (Vercel)
 
-The backend can be deployed to Vercel for serverless hosting.
+The backend is configured for deployment to Vercel for serverless hosting.
 
 #### Setup Instructions:
 
@@ -123,9 +123,20 @@ The backend can be deployed to Vercel for serverless hosting.
    ```
 
 3. **Configure environment variables** in the Vercel dashboard:
-   - Add your `GOOGLE_API_KEY` environment variable
+   - Go to your project in the Vercel dashboard
+   - Navigate to Settings → Environment Variables
+   - Add `GOOGLE_API_KEY` with your Google Gemini API key
 
-4. **Update frontend API calls** to use the Vercel deployment URL
+4. **Update frontend API calls**:
+   - Once deployed, Vercel will provide a URL like: `https://your-project.vercel.app`
+   - Update your frontend API calls to use this URL instead of `localhost:8000`
+
+#### Vercel Configuration Files:
+
+- `vercel.json`: Configures the Python runtime and routing
+- `requirements.txt`: Python dependencies for Vercel
+- `runtime.txt`: Specifies Python 3.11 runtime
+- Updated CORS settings to allow GitHub Pages domain
 
 ## Usage
 
